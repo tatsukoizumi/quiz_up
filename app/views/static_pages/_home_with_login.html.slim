@@ -1,0 +1,31 @@
+.row
+    aside.col-md-4.col-lg-3.col-xl-3.d-none.d-md-block
+      .card.profile.mb-3.bg-light
+        .card-body
+          h5.card-title =current_user.name
+          h3.created_quiz.attention 作成したクイズ ：#{current_user.questions.count}問
+          =link_to 'マイページ', current_user
+          
+      .card.recent-quiz.mb-3.bg-light
+        .card-body
+          h5.card-title 新着クイズ
+          -@recent_groups.each_with_index do |group, i|
+            =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action recent-quiz-item text-center'
+            -break if i == 4
+            
+      .btn style= "width: 100%;"
+        =link_to '新しいクイズを作る', new_group_path, class: 'btn btn-primary text-center'
+    
+    .quiz-list.list-group.col-xs-12.col-md-8.col-lg-9
+      -@groups.each_with_index do |group, i|
+        div.list-group.text-center.mx-auto style= "width: 80%;"
+          =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1'
+          p.attention.text-right
+            | Created by  
+            -if group.user == current_user
+              = link_to 'me', user_path(group.user)
+            -else
+              = link_to group.user.name, user_path(group.user)
+        -break if i == 9
+    
+      =link_to 'もっと見る', groups_path, class: 'attention text-center'
