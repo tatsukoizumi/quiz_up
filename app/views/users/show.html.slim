@@ -1,0 +1,25 @@
+.user-profile.mx-auto
+  .user-name.mx-auto
+    p.m-0 ユーザー名
+    .name.h2 #{@user.name}
+    p.user-quiz-data.attention 作成したクイズ : #{@user.questions.count}問  　 正答率 : #{@accurancy}%
+    
+    
+  
+  -if @user == current_user
+    =link_to edit_user_path
+      =icon 'fas', 'ellipsis-h'
+  
+  -if @groups.any?
+    h6.mt-5.text-left.border-bottom.col-xs-12.col-sm-10.col-md-8.col-lg-6.mx-auto 作成したクイズ
+    -@groups.each do |group|
+      .list-group.group-list.col-xs-12.col-sm-10.col-md-8.col-lg-6.mx-auto
+        -if @user == current_user
+          .row.mb-3
+            =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1 col-12'
+            .ml-auto
+              =link_to '編集', edit_group_path(group), class: 'col-6 p-0 my-auto link' 
+              =link_to '削除', group, method: 'delete', data: { confirm: 'このグループのすべての問題が削除されます' }, class: 'col-6 p-0 my-auto link pl-3'
+            
+        -else
+          =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1 col-12'

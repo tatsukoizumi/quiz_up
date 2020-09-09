@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  total_score: 1
+  done_quiz_count: 1
+
+two:
+  name: MyString
+  email: MyString
+  total_score: 1
+  done_quiz_count: 1
