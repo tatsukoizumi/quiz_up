@@ -1,0 +1,32 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
+  =link_to 'QuizUP!!', root_path, class: 'navbar-brand'
+  -if logged_in?
+    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+  
+    div#navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          =link_to 'クイズ作成', new_group_path, class: 'nav-link'
+        li.nav-item
+          =link_to 'クイズ一覧', groups_path, class: 'nav-link'
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ユーザー情報 &#9662;
+          div.dropdown-menu aria-labelledby="navbarDropdown"
+            =link_to 'マイページ', user_path(current_user), class: 'dropdown-item'
+            =link_to '登録情報編集', edit_user_path(current_user), class: 'dropdown-item'
+            div.dropdown-divider.my-3
+            =link_to  logout_path, method: 'delete', data: { confirm: 'ログアウトしてよろしいですか？' }, id: 'logout-link', class: 'dropdown-item'
+              | ログアウト 
+              =icon 'fas', 'sign-out-alt'
+            =link_to 'アカウント削除', delete_account_path(current_user), class: 'dropdown-item attention'
+      =form_with url: serch_groups_path, method: 'get', class: 'form-inline my-2 my-lg-0 col-xs-6', local: true do |f|
+        =f.text_field :cont, placeholder: 'クイズを検索', type: 'serch', class: 'form-control mr-sm-2'
+        =f.submit '検索', class: 'btn btn-outline-success my-2 my-sm-0'
+        
+  -else
+    ul.navbar-nav.ml-auto
+      li.nav-item
+        =link_to 'ログイン', login_path, class: 'nav-link'
+    li.nav-item.ml-3
+      =link_to '新規登録', signup_path, class: 'btn btn-outline-primary'

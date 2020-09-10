@@ -1,0 +1,15 @@
+.user-form  
+  h6 ログイン
+  
+  div.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto.mt-5
+    =form_with scope: :session, local: true do |f|
+      .form-group
+        =f.label :email, 'メールアドレス'
+        =f.text_field :email, class: 'form-control', id: 'session_email'
+        
+      .form-group
+        =f.label :password, 'パスワード'
+        =f.password_field :password, class: 'form-control', id: 'session_password'
+      
+      .btn.mx-auto.mt-3
+        =f.submit 'ログイン', class: 'btn btn-primary'
