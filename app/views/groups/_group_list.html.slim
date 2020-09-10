@@ -1,0 +1,13 @@
+h6.mt-5.text-left.border-bottom.mx-auto.col-10.col-md-8.col-lg-6 クイズ一覧
+-@groups.each do |group|
+  .list-group.group-list.mx-auto.col-10.col-md-8.col-lg-6
+    =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1'
+    p
+      | Created by  
+      -if group.user == current_user
+        = link_to 'me', user_path(group.user)
+      -else
+          = link_to group.user.name, user_path(group.user)
+          
+  .pagination.mx-auto
+    = paginate @groups

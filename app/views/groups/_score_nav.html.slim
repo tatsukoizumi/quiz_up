@@ -1,0 +1,10 @@
+.score-nav.row
+  .col-6.col-lg-8.col-xl-10
+  .col-3.col-lg.col-xl-1.row
+    .correct-icon.icon.col-6
+      =icon 'fas', 'check'
+    .correct-count.col-6 #{@score}
+  .col-3.col-lg.col-xl-1.row
+    .wrong-icon.icon.col-6
+      =icon 'fas', 'times'
+    .wrong-count.col-6 #{@miss}

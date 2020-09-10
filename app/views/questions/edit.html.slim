@@ -1,2 +1,35 @@
-h1 Questions#edit
-p Find me in app/views/questions/edit.html.slim
+div.quiz-form.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto.mt-3
+            
+  =form_with model: @quiz, url: quiz_update_url, local: true, class: 'mx-auto quiz-edit-form' do |f|
+    .group-content.m-0.text-center  #{@group.content} 
+     
+
+    =f.hidden_field :question_id, value: @question.id
+    
+    .form-group.mt-3
+      =f.label :question_content, '問題文を記入'
+      =f.text_area :question_content, class: 'form-control',value: @question.content
+    .form-group
+      =f.label :answer
+        ==icon 'fas', 'check'
+        |  正解の選択肢
+      =f.text_field :answer, class: 'form-control answer',value: @answer.content
+    .form-group.mt-5
+      =f.label :wrong_choice_1
+        =icon 'fas', 'times'
+        |  ダミーの選択肢①
+      =f.text_field :wrong_choice_1, class: 'form-control fake',value: @wrong_choices[0].content
+    .form-group
+      =f.label :wrong_choice_2
+        =icon 'fas', 'times'
+        |  ダミーの選択肢②
+      =f.text_field :wrong_choice_2, class: 'form-control fake',value: @wrong_choices[1].content
+    .form-group
+      =f.label :wrong_choice_3
+        =icon 'fas', 'times'
+        |  ダミーの選択肢③
+      =f.text_field :wrong_choice_3, class: 'form-control fake',value: @wrong_choices[2].content
+      
+    .btn-area.mt-5.mx-auto
+      =f.submit '戻る',name: 'back', class: 'btn btn-secondary mx-auto'
+      =f.submit '更新', id: 'quiz-update-btn', class: 'btn btn-primary mx-auto'

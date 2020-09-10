@@ -1,2 +1,21 @@
-h1 Groups#score_label
-p Find me in app/views/groups/score_label.html.slim
+-if @correct_answer_rate == 100
+  #perfect.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto Perfect!!
+
+.score-label.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto
+  .row.score-label-main
+    .col-6.row
+      .correct-icon.icon.col-7
+        =icon 'fas', 'check'
+      .correct-count.col-5 #{@score}
+    .col-6.row
+      .wrong-icon.icon.col-7
+        =icon 'fas', 'times'
+      .wrong-count.col-5 #{@miss}
+    
+  .correct-answer-rate.mt-5 正答率 : #{@correct_answer_rate}%
+  
+  =link_to 'もう一度', answering_path(@group), class: 'btn btn-success mx-auto mt-5'
+  
+  .border.mt-3.mx-auto
+  
+  =link_to 'Home', root_path, class: 'btn btn-primary mx-auto mt-3'

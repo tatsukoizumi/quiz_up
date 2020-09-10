@@ -1,2 +1,35 @@
-h1 Questions#new
-p Find me in app/views/questions/new.html.slim
+div.quiz-form.new-quiz-form.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto.mt-3
+            
+  =form_with model: @quiz, url: confirm_quiz_path, local: true, class: 'mx-auto' do |f|
+    .group-content.m-0.text-center  #{@group.content}  
+  
+    .question-count.mb-3.text-center 第#{@group.questions.count + 1}問
+    
+    =f.hidden_field :question_user_id, value: current_user.id
+    =f.hidden_field :group_id, value: @group.id
+    
+    .form-group.mt-3
+      =f.label :question_content, '問題文を記入'
+      =f.text_area :question_content, class: 'form-control'
+    .form-group
+      =f.label :answer
+        =icon 'fas', 'check'
+        |  正解の選択肢
+      =f.text_field :answer, class: 'form-control answer'
+    .form-group.mt-5
+      =f.label :wrong_choice_1
+        =icon 'fas', 'times'
+        |  ダミーの選択肢①
+      =f.text_field :wrong_choice_1, class: 'form-control fake'
+    .form-group
+      =f.label :wrong_choice_2
+        =icon 'fas', 'times'
+        |  ダミーの選択肢②
+      =f.text_field :wrong_choice_2, class: 'form-control fake'
+    .form-group
+      =f.label :wrong_choice_3
+        =icon 'fas', 'times'
+        |  ダミーの選択肢③
+      =f.text_field :wrong_choice_3, class: 'form-control fake'
+    .btn
+      =f.submit '確認', class: 'btn btn-secondary'

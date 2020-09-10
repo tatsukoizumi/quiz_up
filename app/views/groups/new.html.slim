@@ -1,2 +1,14 @@
-h1 Groups#new
-p Find me in app/views/groups/new.html.slim
+.new-group-form.mx-auto.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto.mt-3
+  =form_with model: @group, local: true, class: 'group-name-form mx-auto' do |f|
+    .form-group
+      =f.text_field :content, placeholder: '新しいグループを作成', class: 'form-control'
+    .form-group
+      =f.hidden_field :user_id, value: @user.id
+
+      =f.submit '問題の作成へ進む', class: 'btn btn-primary'
+
+  div.col-10.created-groups.p-0.mx-auto
+    h6.mt-5.text-center 既存のグループに問題を追加する
+    -@groups.each do |group|
+      .list-group.group-list
+        =link_to group.content, new_quiz_path(group), class: 'list-group-item list-group-item-action mt-1'

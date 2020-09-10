@@ -1,0 +1,49 @@
+div.quiz-form.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto.mt-3
+
+  =form_with model: @quiz, url: quiz_path, local: true, class: 'mx-auto quiz-confirm-form' do |f|
+    .group-content.m-0.text-center  #{@group.content}  
+  
+    .question-count.mb-3.text-center 第#{@group.questions.count + 1}問
+       
+    = f.hidden_field :question_content
+    
+    = f.hidden_field :question_user_id, value: current_user.id
+    
+    = f.hidden_field :group_id, value: @quiz.group_id
+    
+    .form-group
+        =f.label :question_content, '問題文'
+        =f.text_area :question_content, disabled: true, value: @quiz.question_content, class: 'form-control'
+        =f.hidden_field :question
+    .form-group
+        =f.label :answer
+          =icon 'fas', 'check'
+          |  正解の選択肢
+        =f.text_field :answer, disabled: true, value: @quiz.answer, class: 'form-control'
+        =f.hidden_field :answer
+    .form-group.mt-5
+        =f.label :wrong_choice_1
+          =icon 'fas', 'times'
+          |  ダミーの選択肢①
+        =f.text_field :wrong_choice_1, disabled: true, value: @quiz.wrong_choice_1, class: 'form-control'
+        =f.hidden_field :wrong_choice_1
+    .form-group
+        =f.label :wrong_choice_2
+          =icon 'fas', 'times'
+          |  ダミーの選択肢②
+        =f.text_field :wrong_choice_2, disabled: true, value: @quiz.wrong_choice_2, class: 'form-control'
+        =f.hidden_field :wrong_choice_2
+    .form-group
+        =f.label :wrong_choice_3
+          =icon 'fas', 'times'
+          |  ダミーの選択肢②
+        =f.text_field :wrong_choice_3, disabled: true, value: @quiz.wrong_choice_3, class: 'form-control'
+        =f.hidden_field :wrong_choice_3
+    .attention-area.mx-auto
+    .attention ・「次へ」または「完了」をクリックすると問題が保存されます
+    -if @questions.count < 5
+      .attention ・グループを有効にするには５問以上作成してください
+    .btn-area.mt-4
+      = f.submit '戻る',name: 'back', class: 'btn btn-secondary mr-auto'
+      = f.submit '完了', name: 'done', class: 'btn btn-primary mx-auto'
+      = f.submit '次へ', class: 'btn btn-success ml-auto'

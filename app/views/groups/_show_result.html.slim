@@ -1,0 +1,8 @@
+.show-result-form.col-xs-12.col-sm-10.col-md-7.col-lg-5.mx-auto
+  
+  =form_with url: answer_create_path, class: 'mx-auto' do |f|
+    .answer-content.col-10.mx-auto.mb-3 A. #{@answer.content}
+    -if @quiz_num == @questions.count
+      =f.submit '結果を見る', name: 'score_label', class: 'btn btn-primary'
+    -else
+      =f.submit '次へ', class: 'btn btn-success'

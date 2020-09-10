@@ -1,2 +1,17 @@
-h1 Groups#edit
-p Find me in app/views/groups/edit.html.slim
+.row.col-xs-12.col-xs-12.col-sm-10.col-md-8.col-lg-6.mx-auto
+  =link_to 'マイページに戻る', current_user, class: 'link mr-auto'
+
+  =form_with model: @group, local: true, class: 'mx-auto col-12 mb-3 mt-5' do |f|
+    .form-group.row
+      =f.label :content, 'グループ名', class: 'col-12 mr-auto'
+      =f.text_field :content, class: 'form-control col-10', id: 'user_name', value: @group.content
+      =f.submit '変更', class: 'btn btn-success text-center col-1.5  ml-auto'
+    
+  .mx-auto.mb-5
+    =link_to '問題を追加', new_quiz_path(@group), class: 'btn btn-primary mx-auto'
+    
+  -@group.questions.each do |question|
+    .col-12.list-group-item.mt-3 #{question.content}
+    .ml-auto
+      =link_to '編集', edit_quiz_path(id: @group.id, question_id: question.id), class: 'col-6 p-0 my-auto link' 
+      =link_to '削除', delete_question_path(id: @group.id, question_id: question.id), method: 'delete', data: { confirm: 'この問題を削除しますか？' }, class: 'col-6 pl-3 pr-0 my-auto link'

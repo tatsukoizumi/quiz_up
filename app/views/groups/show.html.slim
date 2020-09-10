@@ -1,2 +1,10 @@
-h1 Groups#show
-p Find me in app/views/groups/show.html.slim
+.show-group.mx-auto.mt-5
+  h1 =@group.content
+  p 問題数: #{@group.questions.count}
+  
+  -if @group.questions.count >= 5
+    =button_to '回答スタート', answering_path, method: 'get', class: 'btn btn-success mt-5'
+  -elsif @group.questions.count < 5 && @user
+   .attention まだ有効ではありません。あと#{5 - @group.questions.count}問作成してください。
+  -else
+   .attention まだ有効ではありません。
