@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :groups do
     get :serch, on: :collection
   end
+  
   resources :questions, except:[:new, :create, :edit, :update, :destroy] 
   post '/groups/:id/confirm-quiz', to: 'questions#confirm_quiz', as: 'confirm_quiz'
   get '/groups/:id/confirm-quiz', to: 'questions#new'
