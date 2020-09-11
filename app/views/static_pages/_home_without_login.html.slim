@@ -1,13 +1,7 @@
-.quiz-list.list-group.col-xs-12.col-md-8.col-lg-9
-      -@groups.each_with_index do |group, i|
-        div.list-group.text-center.mx-auto style= "width: 80%;"
-          =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1'
-          p.attention.text-right
-            | Created by  
-            -if group.user == current_user
-              = link_to 'me', user_path(group.user)
-            -else
-              = link_to group.user.name, user_path(group.user)
-        -break if i == 9
-    
-      =link_to 'もっと見る', groups_path, class: 'attention text-center'
+-@groups.each_with_index do |group, i|
+  .quiz-list.list-group.col-xs-12.col-md-8.mx-auto.text-center
+    =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1'
+    p.attention.text-right
+      | Created by  
+      =link_to 'QuizUp!! User', login_path
+  -break if i == 9

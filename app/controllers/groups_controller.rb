@@ -97,7 +97,7 @@ before_action :valid_groups, only: [:index, :serch]
     @score = @@score
     @miss = @@miss
     @correct_answer_rate = ((@@score / @group.questions.count.to_f) * 100).round
-    current_user.update_quiz_data(@@score, @group.questions.count)
+    current_user.update_quiz_data(@@score, @group.questions.count) unless current_user.nil?
   end
 
   private
