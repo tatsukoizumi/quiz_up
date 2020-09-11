@@ -10,5 +10,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :with_password
 
   has_many :groups
-has_many :questions
+  has_many :questions
 end
