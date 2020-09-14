@@ -1,22 +1,27 @@
 .row
   aside.col-lg-3.d-none.d-lg-block
     .card.profile.bg-light
-      .card-body.mx-auto
+      .card-body.mx-auto.text-center
         =link_to '新規登録', signup_path, class: 'btn btn-outline-primary'
-        
+        .border-bottom.col-12.my-4
+        .text-left.mb-3 登録するとできること...
+        li.text-left ・Quizの作成
+        li.text-left ・すべての問題の回答権
+        li.text-left ・ランキングへの参加
+        .text-right.mt-3 etc...
     .card.recent-quiz.mb-3.bg-light
       .card-body.mx-auto
         =link_to 'ログイン', login_path, class: 'btn btn-outline-success'
           
     .btn style= "width: 100%;"
-      =link_to 'Quiz作成(ログイン）', new_group_path, class: 'btn btn-primary text-center'
+      =link_to 'Quiz作成(ログイン）', new_group_path, class: 'btn btn-primary text-center mt-4'
   
   div id="carouselExampleControls" class="carousel slide mx-auto col-xs-12 col-md-12 col-lg-9" data-ride="carousel"
     .carousel-inner
       .carousel-item.active
         =image_tag 'app_image1.png'
       .carousel-item
-        =image_tag 'app_image2.png'
+        =image_tag 'app_image2.png' 
       .carousel-item
         =image_tag 'app_image3.png'
       .carousel-item
@@ -30,6 +35,7 @@
   
   
   .quiz-list.list-group.col-lg-8.mx-auto.mt-5
+    h6.border-bottom.mt-5.mx-auto.col-12.text-center 新着クイズ
     -@groups.each_with_index do |group, i|
       div.list-group.text-center.mx-auto style= "width: 80%;"
         =link_to group.content, group_path(group), class: 'list-group-item list-group-item-action mt-1'
