@@ -14,7 +14,7 @@
             -break if i == 4
             
       .btn style= "width: 100%;"
-        =link_to '新しいクイズを作る', new_group_path, class: 'btn btn-primary text-center'
+        =link_to 'Quiz作成', new_group_path, class: 'btn btn-primary text-center'
     
     .quiz-list.list-group.col-xs-12.col-md-8.col-lg-9
       -@groups.each_with_index do |group, i|
