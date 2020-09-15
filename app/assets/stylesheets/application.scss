@@ -315,6 +315,16 @@ aside {
   }
 }
 
+.rank-user-name {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  span {
+    font-size: 0.7rem;  
+  }
+}
+
 .user-form {
   text-align: center;
   form {

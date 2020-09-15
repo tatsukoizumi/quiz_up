@@ -11,11 +11,26 @@ class User < ApplicationRecord
 
   has_many :groups, foreign_key: :user_id, dependent: :destroy
   has_many :questions, foreign_key: :user_id, dependent: :destroy
+
+  scope :rank, -> { order(total_score: :desc) }
   
   def update_quiz_data(score, count)
-    total_score = self.total_score + score
+    score = self.total_score + score
     done = self.done_quiz_count + count
-    self.update(total_score: total_score, done_quiz_count: done)
+    self.update(total_score: score, done_quiz_count: done)
+  end
+
+  def accurancy
+    if self.done_quiz_count == 0
+      return 0
+    else
+      return ((self.total_score / self.done_quiz_count.to_f) * 100).round
+    end
+  end
+
+  def point
+    return self.total_score * 10
   end
   
 end
+

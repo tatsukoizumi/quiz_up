@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+before_action :logged_in_user, only: [:new, :confirm_quiz, :create, :create, :edit, :update, :destroy]
+
 def new
   @user = current_user
   @group = Group.find_by(id: params[:id])

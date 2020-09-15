@@ -1,0 +1,15 @@
+.list-group.col-xs-12.col-sm-10.col-md-8.col-lg-6.mx-auto
+  h6.mt-5.text-left.border-bottom.col-12.mx-auto.mb-3 ランキング
+  -@users.each do |user|
+    -if user == current_user
+      =link_to user_path(user), class: 'list-group-item list-group-item-action mx-auto active col-12 text-center mb-3 h3 rank-user-name'
+        | #{user.name}
+        span.d-inline-block -#{user.point}pt
+          
+    -else
+      =link_to user_path(user), class: 'list-group-item list-group-item-action mx-auto  col-12 text-center mb-3 h3 rank-user-name'
+        | #{user.name}
+        span.d-inline-block -#{user.point}pt
+
+  .pagination.mx-auto.mt-5
+      = paginate @users

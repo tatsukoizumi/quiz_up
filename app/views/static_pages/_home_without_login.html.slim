@@ -5,9 +5,15 @@
         =link_to '新規登録', signup_path, class: 'btn btn-outline-primary'
         .border-bottom.col-12.my-4
         .text-left.mb-3 登録するとできること...
-        li.text-left ・Quizの作成
-        li.text-left ・すべての問題の回答権
-        li.text-left ・ランキングへの参加
+        li.text-left
+          =icon 'fas', 'hand-point-right'
+          |  Quizの作成
+        li.text-left
+          =icon 'fas', 'hand-point-right'
+          |  すべての問題の回答権
+        li.text-left
+          =icon 'fas', 'hand-point-right'
+          |  ランキングへの参加
         .text-right.mt-3 etc...
     .card.recent-quiz.mb-3.bg-light
       .card-body.mx-auto

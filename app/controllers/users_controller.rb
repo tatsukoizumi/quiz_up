@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     @groups = @user.groups
   end
 
+  def index
+    @users = User.rank.page(params[:page]).per(2)
+  end
+
   def edit
     @user = User.find(params[:id])
   end

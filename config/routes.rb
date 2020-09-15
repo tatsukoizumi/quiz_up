@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-  resources :users, except: [:index]
+  resources :users
   resources :groups do
     get :serch, on: :collection
   end

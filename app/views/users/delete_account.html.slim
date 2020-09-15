@@ -1,0 +1,19 @@
+.div#delete-account.mx-auto.mt-5
+  h3.font-italic.col-sm-12.col-md-10.col-lg-6.mx-auto
+    | #{@user.name} 
+    span.font-weight-lighter さん
+  
+  .card.mx-auto.col-sm-12.col-md-10.col-lg-6.bg-light
+    h1.card-title.text-center.pt-5 本当に削除しますか？
+    ul.mt-5
+      li ・あなたの作成したクイズもすべて削除されます
+      li.pt-3 ・あなたの回答データも失われます
+      li.pt-3 ・失われたデータは復元できません
+    
+    =form_with url: { coltroller: 'users', action: 'destroy' }, method: 'delete' do |f|
+      .pt-5.pl-5
+        =f.check_box :agree, include_hidden: false
+        =f.label :agree, '確認しました', class: 'pl-3'
+      .mx-auto.my-5.text-center
+        =f.submit '削除', class: 'btn btn-danger col-3'
+    
