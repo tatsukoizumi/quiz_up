@@ -1,7 +1,10 @@
 # QuizUP!!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple 4-choice-Quiz-App easy to play and create quizes. Click
+[*here*](https://quiz-up-is-quiz-app.herokuapp.com/)
+to access.
+
+##
 
 Things you may want to cover:
 
