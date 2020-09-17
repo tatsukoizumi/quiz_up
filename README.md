@@ -10,12 +10,12 @@ to access.
 
 ## Imformation:
 
-* Version
-- Ruby 2.7.1  
-- Ruby on Rails 6.0.3.2
+  ### Version
+    - Ruby 2.7.1  
+    - Ruby on Rails 6.0.3.2
 
-* Function and Skill
-- Basic CRUD function for user-function and quiz-function.
-- User's ranking.
-- Simple Search Function.
-- Form Object
+  ### Function and Skill
+    - Basic CRUD function for user-function and quiz-function.
+    - User's ranking.
+    - Simple Search Function.
+    - Form Object
